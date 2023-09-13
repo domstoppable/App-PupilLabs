@@ -82,6 +82,10 @@ class Pupil_LSL_Relay(Plugin):
             Outlet.setup(name, uuid) for name, uuid in outlet_config.items()
         ]
 
+        for outlet in self._outlets:
+            if hasattr(outlet, 'g_pool'):
+                outlet.g_pool = self.g_pool
+
     def recent_events(self, events):
         for outlet in self._outlets:
             for sample in events.get(outlet.event_key, ()):

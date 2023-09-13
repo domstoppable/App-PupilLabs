@@ -1,5 +1,6 @@
 from .fixations_scene_camera import SceneCameraFixations
 from .gaze_scene_camera import SceneCameraGaze
+from .gaze_surface import SurfaceGaze
 from .outlet import Outlet
 from .plugin import Pupil_LSL_Relay
 from .pupillometry_eye_camera import EyeCameraPupillometry
@@ -13,4 +14,5 @@ __all__ = [
     "Pupil_LSL_Relay",
     "SceneCameraGaze",
     "SceneCameraFixations",
+    "SurfaceGaze",
 ]
