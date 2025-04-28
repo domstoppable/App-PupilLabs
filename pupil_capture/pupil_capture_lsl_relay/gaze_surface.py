@@ -39,7 +39,7 @@ class SurfaceGaze(Outlet):
 
         # if both eyes are enabled, only push samples that use combined-eyes data
         if all(x.value for x in self.g_pool.eye_procs_alive):
-            surface_gazes = filter(lambda x: x['topic'] == 'gaze.3d.01._on_surface', surface_gazes)
+            surface_gazes = filter(lambda x: '.01' in x['topic'], surface_gazes)
 
         for subsample in surface_gazes:
             super().push_sample(subsample)
