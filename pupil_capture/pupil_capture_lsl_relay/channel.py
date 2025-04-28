@@ -8,7 +8,7 @@
 ----------------------------------------------------------------------------------~(*)
 """
 import numpy as np
-from pylsl import XMLElement
+from pylsl.info import XMLElement
 
 
 class Channel:
