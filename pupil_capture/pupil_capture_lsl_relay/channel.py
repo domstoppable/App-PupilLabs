@@ -232,60 +232,22 @@ def make_extract_gaze_normal_3d(eye, dim):
 
 def make_extract_diameter_2d(eye):
     def extract_diameter_2d(datum):
-        if "gaze" in datum["topic"]:
-            base_data = datum["base_data"]
-            for pupil in base_data:
-                if pupil["id"] == eye:
-                    return pupil["diameter"]
-            else:
-                return np.nan
-        elif "pupil" in datum["topic"]:
+        if "pupil" in datum["topic"] and datum["topic"].endswith("2d"):
             if datum["id"] == eye:
                 return datum["diameter"]
-            else:
-                return np.nan
-        else:
-            raise ValueError(f"Unexpected datum: {datum}")
+
+        return np.nan
 
     return extract_diameter_2d
 
 
 def make_extract_diameter_3d(eye):
     def extract_diameter_3d(datum):
-        if "gaze" in datum["topic"]:
-            base_data = datum["base_data"]
-            for pupil in base_data:
-                if pupil["id"] == eye and "diameter_3d" in pupil:
-                    return pupil["diameter_3d"]
-            else:
-                return np.nan
-        elif "pupil" in datum["topic"]:
-            if datum["id"] == eye and "diameter_3d" in datum:
+        if "pupil" in datum["topic"] and datum["topic"].endswith("3d"):
+            if datum["id"] == eye:
                 return datum["diameter_3d"]
-            else:
-                return np.nan
-        else:
-            raise ValueError(f"Unexpected datum: {datum}")
 
-    return extract_diameter_3d
-
-
-def make_extract_diameter_3d(eye):
-    def extract_diameter_3d(datum):
-        if "gaze" in datum["topic"]:
-            base_data = datum["base_data"]
-            for pupil in base_data:
-                if pupil["id"] == eye and "diameter_3d" in pupil:
-                    return pupil["diameter_3d"]
-            else:
-                return np.nan
-        elif "pupil" in datum["topic"]:
-            if datum["id"] == eye and "diameter_3d" in datum:
-                return datum["diameter_3d"]
-            else:
-                return np.nan
-        else:
-            raise ValueError(f"Unexpected datum: {datum}")
+        return np.nan
 
     return extract_diameter_3d
 
